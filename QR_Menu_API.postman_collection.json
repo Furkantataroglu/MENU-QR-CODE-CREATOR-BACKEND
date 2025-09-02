@@ -1,0 +1,343 @@
+{
+  "info": {
+    "name": "QR Menu API",
+    "description": "QR Kod Menü API test collection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Users",
+      "item": [
+        {
+          "name": "Create User",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"restoran@example.com\",\n  \"password\": \"123456\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/user",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "user"]
+            }
+          }
+        },
+        {
+          "name": "Get All Users",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/user",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "user"]
+            }
+          }
+        },
+        {
+          "name": "Get User by ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/user/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "user", "1"]
+            }
+          }
+        },
+        {
+          "name": "Update User",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"restoran_updated@example.com\",\n  \"password\": \"654321\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/user/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "user", "1"]
+            }
+          }
+        },
+        {
+          "name": "Delete User",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "{{baseUrl}}/api/user/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "user", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Menus",
+      "item": [
+        {
+          "name": "Create Menu (with QR Code)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Akşam Menüsü\",\n  \"userId\": 1\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/menus",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "menus"]
+            }
+          }
+        },
+        {
+          "name": "Get All Menus",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/menus",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "menus"]
+            }
+          }
+        },
+        {
+          "name": "Get Menu by ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/menus/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "menus", "1"]
+            }
+          }
+        },
+        {
+          "name": "Get Menus by User ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/users/1/menus",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "users", "1", "menus"]
+            }
+          }
+        },
+        {
+          "name": "Update Menu",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Güncellenmiş Akşam Menüsü\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/menus/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "menus", "1"]
+            }
+          }
+        },
+        {
+          "name": "Delete Menu",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "{{baseUrl}}/api/menus/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "menus", "1"]
+            }
+          }
+        },
+        {
+          "name": "Regenerate Menu QR",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "{{baseUrl}}/api/menus/1/regenerate-qr",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "menus", "1", "regenerate-qr"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Dishes",
+      "item": [
+        {
+          "name": "Create Dish",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Kebap\",\n  \"description\": \"Özel soslu kebap\",\n  \"price\": 45.50,\n  \"imageUrl\": \"https://example.com/kebap.jpg\",\n  \"menuId\": 1\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/dishes",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "dishes"]
+            }
+          }
+        },
+        {
+          "name": "Get All Dishes",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/dishes",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "dishes"]
+            }
+          }
+        },
+        {
+          "name": "Get Dish by ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/dishes/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "dishes", "1"]
+            }
+          }
+        },
+        {
+          "name": "Get Dishes by Menu ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/menus/1/dishes",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "menus", "1", "dishes"]
+            }
+          }
+        },
+        {
+          "name": "Get Dishes by User ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/users/1/dishes",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "users", "1", "dishes"]
+            }
+          }
+        },
+        {
+          "name": "Update Dish",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Güncellenmiş Kebap\",\n  \"description\": \"Yeni tarif\",\n  \"price\": 50.00\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/dishes/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "dishes", "1"]
+            }
+          }
+        },
+        {
+          "name": "Delete Dish",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "{{baseUrl}}/api/dishes/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "dishes", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Public Menu (QR Code Access)",
+      "item": [
+        {
+          "name": "View Menu by QR Code",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/menu/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["menu", "1"]
+            }
+          }
+        },
+        {
+          "name": "View QR Code (Visual)",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/qr/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["qr", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Database Test",
+      "item": [
+        {
+          "name": "Test Database Connection",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/",
+              "host": ["{{baseUrl}}"],
+              "path": [""]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5001",
+      "type": "string"
+    }
+  ]
+}
