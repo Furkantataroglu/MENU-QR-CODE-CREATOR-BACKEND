@@ -1,58 +1,58 @@
-# QR Kod Menü API
+# QR Code Menu API
 
-Bu proje, restoranların menülerini QR kod ile paylaşabilmelerini sağlayan bir backend API'dir.
+This project is a backend API that enables restaurants to share their menus via QR codes.
 
-## Özellikler
+## Features
 
-- ✅ Kullanıcı yönetimi (CRUD)
-- ✅ Menü yönetimi (CRUD)
-- ✅ Yemek yönetimi (CRUD)
-- ✅ QR kod otomatik oluşturma
-- ✅ Public menü görüntüleme (QR kod ile erişim)
+- ✅ User management (CRUD)
+- ✅ Menu management (CRUD)
+- ✅ Dish management (CRUD)
+- ✅ Automatic QR code generation
+- ✅ Public menu viewing (accessible via QR code)
 - ✅ Validation middleware
 - ✅ Error handling
-- ✅ PostgreSQL veritabanı
+- ✅ PostgreSQL database
 - ✅ Prisma ORM
 
-## Teknolojiler
+## Technologies
 
 - **Backend**: Node.js, Express.js
-- **Veritabanı**: PostgreSQL
+- **Database**: PostgreSQL
 - **ORM**: Prisma
 - **Validation**: Joi
-- **QR Kod**: qrcode
+- **QR Code**: qrcode
 
 
 ## API Endpoints
 
-### Kullanıcı İşlemleri
-- `POST /api/user` - Yeni kullanıcı oluştur
-- `GET /api/user` - Tüm kullanıcıları getir
-- `GET /api/user/:id` - ID'ye göre kullanıcı getir
-- `PUT /api/user/:id` - Kullanıcı güncelle
-- `DELETE /api/user/:id` - Kullanıcı sil
+### User Operations
+- `POST /api/user` - Create a new user
+- `GET /api/user` - Get all users
+- `GET /api/user/:id` - Get a user by ID
+- `PUT /api/user/:id` - Update a user
+- `DELETE /api/user/:id` - Delete a user
 
-### Menü İşlemleri
-- `POST /api/menus` - Yeni menü oluştur (QR kod ile birlikte)
-- `GET /api/menus` - Tüm menüleri getir
-- `GET /api/menus/:id` - ID'ye göre menü getir
-- `GET /api/users/:userId/menus` - Kullanıcıya ait menüleri getir
-- `PUT /api/menus/:id` - Menü güncelle
-- `DELETE /api/menus/:id` - Menü sil
-- `POST /api/menus/:id/regenerate-qr` - QR kod yeniden oluştur
+### Menu Operations
+- `POST /api/menus` - Create a new menu (with QR code)
+- `GET /api/menus` - Get all menus
+- `GET /api/menus/:id` - Get a menu by ID
+- `GET /api/users/:userId/menus` - Get menus for a specific user
+- `PUT /api/menus/:id` - Update a menu
+- `DELETE /api/menus/:id` - Delete a menu
+- `POST /api/menus/:id/regenerate-qr` - Regenerate QR code
 
-### Yemek İşlemleri
-- `POST /api/dishes` - Yeni yemek oluştur
-- `GET /api/dishes` - Tüm yemekleri getir
-- `GET /api/dishes/:id` - ID'ye göre yemek getir
-- `GET /api/menus/:menuId/dishes` - Menüye ait yemekleri getir
-- `PUT /api/dishes/:id` - Yemek güncelle
-- `DELETE /api/dishes/:id` - Yemek sil
+### Dish Operations
+- `POST /api/dishes` - Create a new dish
+- `GET /api/dishes` - Get all dishes
+- `GET /api/dishes/:id` - Get a dish by ID
+- `GET /api/menus/:menuId/dishes` - Get dishes for a specific menu
+- `PUT /api/dishes/:id` - Update a dish
+- `DELETE /api/dishes/:id` - Delete a dish
 
-### Public Endpoints (QR Kod ile Erişim)
-- `GET /menu/:id` - Menüyü public olarak görüntüle
+### Public Endpoints (QR Code Access)
+- `GET /menu/:id` - View a menu publicly
 
-## Veritabanı Şeması
+## Database Schema
 
 ### User Model
 ```prisma
@@ -91,14 +91,14 @@ model Dish {
 }
 ```
 
-## QR Kod Sistemi
+## QR Code System
 
-### QR Kod İçeriği
-Her menü için oluşturulan QR kod şu bilgileri içerir:
+### QR Code Payload
+Each menu's generated QR code contains the following data:
 ```json
 {
   "menuId": 1,
-  "title": "Akşam Menüsü",
+  "title": "Dinner Menu",
   "createdAt": "2024-01-01T00:00:00.000Z",
   "dishes": [...],
   "type": "menu"

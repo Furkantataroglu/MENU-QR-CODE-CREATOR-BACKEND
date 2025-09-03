@@ -9,6 +9,8 @@ export const fetchAllMenus = () =>
       title: true,
       createdAt: true,
       userId: true,
+      qrCode: true,
+      qrData: true,
       dishes: {
         select: {
           id: true,
@@ -18,9 +20,6 @@ export const fetchAllMenus = () =>
           imageUrl: true,
           createdAt: true,
         },
-      qrCode: true,
-      qrData: true,
-   
         orderBy: { createdAt: 'asc' }
       }
     },
